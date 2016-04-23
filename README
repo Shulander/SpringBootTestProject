@@ -1,0 +1,8 @@
+Maven run
+> mvn spring-boot:run
+
+Maven compile 
+> mvn clean package
+	
+Run jar
+> java -jar target\skeleton-web-service-1.0-SNAPSHOT.jar
