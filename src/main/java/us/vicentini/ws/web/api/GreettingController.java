@@ -45,7 +45,7 @@ public class GreettingController {
 	@RequestMapping(value = "/api/greetings", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Greeting> createGreeting(@RequestBody Greeting greeting) {
 		Greeting saveGreeting = greetingService.create(greeting);
-
+		
 		return new ResponseEntity<>(saveGreeting, HttpStatus.CREATED);
 	}
 
