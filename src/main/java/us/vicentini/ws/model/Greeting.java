@@ -1,11 +1,19 @@
 package us.vicentini.ws.model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author Shulander
  */
-public class Greeting {
+@Entity
+public class Greeting implements Serializable {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 
 	private String text;
