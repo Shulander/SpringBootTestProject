@@ -10,5 +10,5 @@ import us.vicentini.ws.model.Greeting;
  */
 @Repository
 public interface GreetingRepository extends JpaRepository<Greeting, Long> {
-	
+
 }
