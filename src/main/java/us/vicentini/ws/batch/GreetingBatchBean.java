@@ -16,7 +16,7 @@ import us.vicentini.ws.service.GreetingService;
 @Component
 public class GreetingBatchBean {
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private GreetingService greetingService;
