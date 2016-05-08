@@ -8,6 +8,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import us.vicentini.ws.web.api.BaseController;
 
 /**
  *
@@ -24,6 +25,10 @@ public class AbstractControllerTest extends AbstractTest {
 	
 	protected void setUp() {
 		mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+	}
+	
+	protected void setUp(BaseController controller) {
+		mvc = MockMvcBuilders.standaloneSetup(controller).build();
 	}
 	
 	protected String mapToJson(Object obj) throws JsonProcessingException {

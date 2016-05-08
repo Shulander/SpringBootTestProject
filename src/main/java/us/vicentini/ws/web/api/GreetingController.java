@@ -24,7 +24,7 @@ import us.vicentini.ws.service.GreetingService;
  * @author Shulander
  */
 @RestController
-public class GreettingController {
+public class GreetingController extends BaseController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -79,7 +79,7 @@ public class GreettingController {
 		return new ResponseEntity<>(updatedGreeting, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/api/greetings/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/greetings/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Greeting> deleteGreeting(@PathVariable("id") Long id) {
 		logger.info("> deleteGreeting id:{}", id);
 		greetingService.delete(id);
