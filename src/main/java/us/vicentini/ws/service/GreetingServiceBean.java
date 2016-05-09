@@ -6,6 +6,7 @@ import javax.persistence.NoResultException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -27,15 +28,20 @@ public class GreetingServiceBean implements GreetingService {
 
 	@Autowired
 	private GreetingRepository greetingRepository;
+	
+	@Autowired
+	private CounterService counterService;
 
 	@Override
 	public Collection<Greeting> findAll() {
+		counterService.increment("method.invoked.greetingServiceBean.findAll");
 		return greetingRepository.findAll();
 	}
 
 	@Override
 	@Cacheable(value = "greetings", key = "#id")
 	public Greeting findOne(Long id) {
+		counterService.increment("method.invoked.greetingServiceBean.findOne");
 		return greetingRepository.findOne(id);
 	}
 
@@ -43,6 +49,7 @@ public class GreetingServiceBean implements GreetingService {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	@CachePut(value = "greetings", key = "#result.id")
 	public Greeting create(Greeting greeting) {
+		counterService.increment("method.invoked.greetingServiceBean.create");
 		logger.info("> create");
 		if (greeting.getId() != null) {
 			// Cannot create Greeting with specified ID value
@@ -59,6 +66,7 @@ public class GreetingServiceBean implements GreetingService {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	@CachePut(value = "greetings", key = "#greeting.id")
 	public Greeting update(Greeting greeting) {
+		counterService.increment("method.invoked.greetingServiceBean.update");
 		logger.info("> update id:{}", greeting.getId());
 		if (greeting.getId() == null) {
 			// Cannot update Greeting with null ID value
@@ -84,6 +92,7 @@ public class GreetingServiceBean implements GreetingService {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	@CacheEvict(value = "greetings", key = "#id")
 	public void delete(Long id) {
+		counterService.increment("method.invoked.greetingServiceBean.delete");
 		greetingRepository.delete(id);
 	}
 
