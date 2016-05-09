@@ -26,8 +26,6 @@ import us.vicentini.ws.service.GreetingService;
 @RestController
 public class GreetingController extends BaseController {
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	@Autowired
 	private GreetingService greetingService;
 
