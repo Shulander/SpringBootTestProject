@@ -6,3 +6,19 @@ Maven compile
 	
 Run jar
 > java -jar target\skeleton-web-service-1.0-SNAPSHOT.jar
+
+Gradle
+# create the wrapper
+gradle wrapper --gradle-version 2.13
+
+#build the project
+gradle assemble
+
+#clean the project
+gradlew clean
+
+#build, execute the tests and generate reports
+gradle clean check
+
+# combines the assemble and check tasks
+gradle clean build

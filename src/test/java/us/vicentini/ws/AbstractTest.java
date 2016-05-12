@@ -8,13 +8,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import us.vicentini.Application;
 
 /**
- *
+ * The AbstractTest class is the parent of all JUnit test classes. This class
+ * configures the test ApplicationContext and test runner environment.
+ * 
  * @author Shulander
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes=Application.class)
-public class AbstractTest {
+@SpringApplicationConfiguration(
+        classes = Application.class)
+public abstract class AbstractTest {
 
-	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+    /**
+     * The Logger instance for all classes in the unit test framework.
+     */
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
 }
