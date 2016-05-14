@@ -1,23 +1,25 @@
 package us.vicentini.ws.service;
 
 import java.util.Collection;
+
 import us.vicentini.ws.model.Greeting;
 
 /**
- *
+ * Greeting Service interface.
+ * 
  * @author Shulander
  */
 public interface GreetingService {
 
-	Collection<Greeting> findAll();
+    Collection<Greeting> findAll();
 
-	Greeting findOne(Long id);
+    Greeting findOne(Long id);
 
-	Greeting create(Greeting greeting);
+    Greeting create(Greeting greeting);
 
-	Greeting update(Greeting greeting);
+    Greeting update(Greeting greeting);
 
-	void delete(Long id);
+    void delete(Long id);
 
-	void evictCache();
+    void evictCache();
 }

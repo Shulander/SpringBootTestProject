@@ -17,17 +17,17 @@ import us.vicentini.ws.service.GreetingService;
 @Component
 public class GreetingHealthIndicator implements HealthIndicator {
 
-	@Autowired
-	private GreetingService greetingService;
+    @Autowired
+    private GreetingService greetingService;
 
-	@Override
-	public Health health() {
-		Collection<Greeting> greetings = greetingService.findAll();
-		if (greetings == null || greetings.isEmpty()) {
-			return Health.down().withDetail("count", 0).build();
-		}
+    @Override
+    public Health health() {
+        Collection<Greeting> greetings = greetingService.findAll();
+        if (greetings == null || greetings.isEmpty()) {
+            return Health.down().withDetail("count", 0).build();
+        }
 
-		return Health.up().withDetail("count", greetings.size()).build();
-	}
+        return Health.up().withDetail("count", greetings.size()).build();
+    }
 
 }

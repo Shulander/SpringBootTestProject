@@ -6,36 +6,37 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- *
+ * Greeting model class.
+ * 
  * @author Shulander
  */
 @Entity
 public class Greeting implements Serializable {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	private String text;
+    private String text;
 
-	public Greeting() {
+    public Greeting() {
 
-	}
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
 
 }
