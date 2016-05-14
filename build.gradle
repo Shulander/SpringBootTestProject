@@ -18,6 +18,7 @@ buildReceiptLicense {
 apply plugin: 'java'
 // apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
+apply plugin: 'maven'
 
 version = '1.0.0-SNAPSHOT'
 sourceCompatibility = 1.8
