@@ -16,9 +16,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableTransactionManagement// looks for methods anotated with @Transactional
-@EnableCaching				// looks for methods anotated with @Cache***
-@EnableScheduling			// looks for methods anotated with @Scheduled
-@EnableAsync				// looks for methods anotated with @AssincronousTaskMethod
+@EnableCaching              // looks for methods anotated with @Cache***
+@EnableScheduling           // looks for methods anotated with @Scheduled
+@EnableAsync                // looks for methods anotated with @AssincronousTaskMethod
 public class Application {
 
 	public static void main(String[] args) throws Exception {

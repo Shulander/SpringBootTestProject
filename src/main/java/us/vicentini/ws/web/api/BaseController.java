@@ -34,7 +34,7 @@ public class BaseController {
 		logger.error("< handleException");
 		return new ResponseEntity<>(responseBody, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+
 	@ExceptionHandler(NoResultException.class)
 	public ResponseEntity<Map<String, Object>> handleNoResultException(NoResultException exception, HttpServletRequest request) {
 		logger.error("> handleNoResultException");

@@ -28,7 +28,7 @@ public class GreetingServiceBean implements GreetingService {
 
 	@Autowired
 	private GreetingRepository greetingRepository;
-	
+
 	@Autowired
 	private CounterService counterService;
 
