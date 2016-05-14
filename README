@@ -22,3 +22,6 @@ gradle clean check
 
 # combines the assemble and check tasks
 gradle clean build
+
+# generate gradle.com report (receipt)
+gradle build -Dreceipt
