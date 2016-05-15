@@ -50,7 +50,7 @@ public class GreetingBatchBean {
      */
     @Scheduled(
         initialDelayString = "${batch.greeting.initialdelay}",
-        fixedRateString = "${batch.greeting.fixdrate}")
+        fixedRateString = "${batch.greeting.fixedrate}")
     public void fixedRateJobWithInitialDelay() {
         logger.info("> fixedRateJobWithInitialDelay");
 
