@@ -13,9 +13,9 @@ INSERT INTO Account (referenceId, username, password, enabled, credentialsexpire
 -- password is 'operations'
 INSERT INTO Account (referenceId, username, password, enabled, credentialsexpired, expired, locked, version, createdBy, createdAt, updatedBy, updatedAt) VALUES ('5eef0e2d-f71b-49b3-b967-75d69233f718', 'operations', '$2a$10$CoMVfutnv1qZ.fNlHY1Na.rteiJhsDF0jB1o.76qXcfdWN6As27Zm', true, false, false, false, 0, 'user', NOW(), NULL, NULL);
 
-INSERT INTO Role (id, code, label) VALUES (1, 'ROLE_USER', 'User');
-INSERT INTO Role (id, code, label) VALUES (2, 'ROLE_ADMIN', 'Admin');
-INSERT INTO Role (id, code, label) VALUES (3, 'ROLE_SYSADMIN', 'System Admin');
+INSERT INTO Role (id, code, label, ordinal, effectiveAt, expiresAt, createdAt) VALUES (1, 'ROLE_USER', 'User', 0, '2016-05-01 00:00:00', NULL, NOW());
+INSERT INTO Role (id, code, label, ordinal, effectiveAt, expiresAt, createdAt) VALUES (2, 'ROLE_ADMIN', 'Admin', 1, '2016-05-01 00:00:00', NULL, NOW());
+INSERT INTO Role (id, code, label, ordinal, effectiveAt, expiresAt, createdAt) VALUES (3, 'ROLE_SYSADMIN', 'System Admin', 2, '2016-05-01 00:00:00', NULL, NOW());
 
 INSERT INTO AccountRole (accountId, roleId) SELECT a.id, r.id FROM Account a, Role r WHERE a.username = 'user' and r.id = 1;
 INSERT INTO AccountRole (accountId, roleId) SELECT a.id, r.id FROM Account a, Role r WHERE a.username = 'operations' and r.id = 3;
