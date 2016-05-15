@@ -1,15 +1,18 @@
 package us.vicentini.ws;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import us.vicentini.ws.web.api.BaseController;
 
 /**
@@ -17,7 +20,7 @@ import us.vicentini.ws.web.api.BaseController;
  * is the parent of all web controller unit test classes. The class ensures that
  * a type of WebApplicationContext is built and prepares a MockMvc instance for
  * use in test methods.
- * 
+ *
  * @author Shulander
  */
 @WebAppConfiguration
@@ -41,6 +44,7 @@ public abstract class AbstractControllerTest extends AbstractTest {
      * Prepares the test class for execution of web tests. Builds a MockMvc
      * instance using standalone configuration facilitating the injection of
      * Mockito resources into the controller class.
+     *
      * @param controller A controller object to be tested.
      */
     protected void setUp(BaseController controller) {
@@ -49,6 +53,7 @@ public abstract class AbstractControllerTest extends AbstractTest {
 
     /**
      * Maps an Object into a JSON String. Uses a Jackson ObjectMapper.
+     *
      * @param obj The Object to map.
      * @return A String of JSON.
      * @throws JsonProcessingException Thrown if an error occurs while mapping.
@@ -61,9 +66,11 @@ public abstract class AbstractControllerTest extends AbstractTest {
     /**
      * Maps a String of JSON into an instance of a Class of type T. Uses a
      * Jackson ObjectMapper.
+     *
+     * @param <T> Generic class type
      * @param json A String of JSON.
      * @param clazz A Class of type T. The mapper will attempt to convert the
-     *        JSON into an Object of this Class type.
+     * JSON into an Object of this Class type.
      * @return An Object of type T.
      * @throws JsonParseException Thrown if an error occurs while mapping.
      * @throws JsonMappingException Thrown if an error occurs while mapping.

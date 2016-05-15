@@ -11,24 +11,24 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Spring Boot main Application
+ * Spring Boot main Application.
  *
  */
 @SpringBootApplication
 @EnableTransactionManagement// looks for methods anotated with @Transactional
-@EnableCaching				// looks for methods anotated with @Cache***
-@EnableScheduling			// looks for methods anotated with @Scheduled
-@EnableAsync				// looks for methods anotated with @AssincronousTaskMethod
+@EnableCaching              // looks for methods anotated with @Cache***
+@EnableScheduling           // looks for methods anotated with @Scheduled
+@EnableAsync                // looks for methods anotated with @AssincronousTaskMethod
 public class Application {
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Application.class, args);
-	}
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(Application.class, args);
+    }
 
-	@Bean
-	public CacheManager cacheManager() {
+    @Bean
+    public CacheManager cacheManager() {
 //		ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager("greetings");
-		GuavaCacheManager cacheManager = new GuavaCacheManager("greetings");
-		return cacheManager;
-	}
+        GuavaCacheManager cacheManager = new GuavaCacheManager("greetings");
+        return cacheManager;
+    }
 }
