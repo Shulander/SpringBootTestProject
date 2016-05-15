@@ -10,6 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import us.vicentini.ws.util.RequestContext;
 
 /**
  * A Spring Security AuthenticationProvider which extends
@@ -47,7 +48,7 @@ public class AccountAuthenticationProvider
     protected void additionalAuthenticationChecks(UserDetails userDetails,
             UsernamePasswordAuthenticationToken token)
                     throws AuthenticationException {
-        logger.debug("> additionalAuthenticationChecks");
+        logger.info("> additionalAuthenticationChecks");
 
         if (token.getCredentials() == null
                 || userDetails.getPassword() == null) {
@@ -58,20 +59,22 @@ public class AccountAuthenticationProvider
                 userDetails.getPassword())) {
             throw new BadCredentialsException("Invalid credentials.");
         }
+        
+        RequestContext.setUsername(userDetails.getUsername());
 
-        logger.debug("< additionalAuthenticationChecks");
+        logger.info("< additionalAuthenticationChecks");
     }
 
     @Override
     protected UserDetails retrieveUser(String username,
             UsernamePasswordAuthenticationToken token)
                     throws AuthenticationException {
-        logger.debug("> retrieveUser");
+        logger.info("> retrieveUser");
 
         UserDetails userDetails = userDetailsService
                 .loadUserByUsername(username);
 
-        logger.debug("< retrieveUser");
+        logger.info("< retrieveUser");
         return userDetails;
     }
 

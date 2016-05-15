@@ -1,11 +1,12 @@
 package us.vicentini.ws.service;
 
-import us.vicentini.ws.model.Account;
-import us.vicentini.ws.repository.AccountRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import us.vicentini.ws.model.Account;
+import us.vicentini.ws.repository.AccountRepository;
 
 /**
  * The AccountServiceBean encapsulates all business behaviors for operations on

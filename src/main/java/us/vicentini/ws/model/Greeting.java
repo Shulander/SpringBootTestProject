@@ -1,9 +1,6 @@
 package us.vicentini.ws.model;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 /**
  * Greeting model class.
@@ -11,24 +8,12 @@ import javax.persistence.Id;
  * @author Shulander
  */
 @Entity
-public class Greeting implements Serializable {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Greeting extends TransactionalEntity {
 
     private String text;
 
     public Greeting() {
 
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getText() {

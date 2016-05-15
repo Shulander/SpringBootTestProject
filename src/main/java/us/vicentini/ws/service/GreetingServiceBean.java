@@ -87,8 +87,11 @@ public class GreetingServiceBean implements GreetingService {
             throw new NoResultException("Requested entity not found.");
         }
 
-        logger.info("< update id:{}", greeting.getId());
-        return greetingRepository.save(greeting);
+        greetingToUpdate.setText(greeting.getText());
+        Greeting updatedGreeting = greetingRepository.save(greetingToUpdate);
+
+        logger.info("< update id:{}", updatedGreeting.getId());
+        return updatedGreeting;
     }
 
     @Override

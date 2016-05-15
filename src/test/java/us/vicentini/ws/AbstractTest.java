@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import us.vicentini.Application;
 
+
 /**
  * The AbstractTest class is the parent of all JUnit test classes. This class
  * configures the test ApplicationContext and test runner environment.

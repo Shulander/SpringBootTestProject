@@ -14,9 +14,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import us.vicentini.ws.service.AccountService;
 import us.vicentini.ws.model.Account;
 import us.vicentini.ws.model.Role;
+import us.vicentini.ws.service.AccountService;
+
 
 /**
  * A Spring Security UserDetailsService implementation which creates UserDetails
