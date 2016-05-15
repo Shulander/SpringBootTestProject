@@ -52,8 +52,8 @@ public class EmailServiceBean implements EmailService {
 
         try {
             send(greeting);
-        } catch (Exception e) {
-            logger.warn("Exception caught sending asynchronous mail.", e);
+        } catch (Exception ex) {
+            logger.warn("Exception caught sending asynchronous mail.", ex);
         }
 
         logger.info("< sendAsync");
@@ -64,14 +64,14 @@ public class EmailServiceBean implements EmailService {
     public Future<Boolean> sendAsyncWithResult(Greeting greeting) {
         logger.info("> sendAsyncWithResult");
 
-        AsyncResponse<Boolean> response = new AsyncResponse<Boolean>();
+        AsyncResponse<Boolean> response = new AsyncResponse<>();
 
         try {
             Boolean success = send(greeting);
             response.complete(success);
-        } catch (Exception e) {
-            logger.warn("Exception caught sending asynchronous mail.", e);
-            response.completeExceptionally(e);
+        } catch (Exception ex) {
+            logger.warn("Exception caught sending asynchronous mail.", ex);
+            response.completeExceptionally(ex);
         }
 
         logger.info("< sendAsyncWithResult");

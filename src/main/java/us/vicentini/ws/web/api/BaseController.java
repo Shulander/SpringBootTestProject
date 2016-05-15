@@ -25,6 +25,13 @@ public class BaseController {
      */
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * Exception Handler.
+     * 
+     * @param exception Exception object
+     * @param request HttpServletRequest object
+     * @return ResponseEntity object
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleException(Exception exception, HttpServletRequest request) {
         logger.error("> handleException");
@@ -39,6 +46,13 @@ public class BaseController {
         return new ResponseEntity<>(responseBody, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    /**
+     * NoResultExceptin Handler.
+     * 
+     * @param exception NoResultException object
+     * @param request HttpServletRequest object
+     * @return ResponseEntity object
+     */
     @ExceptionHandler(NoResultException.class)
     public ResponseEntity<Map<String, Object>> handleNoResultException(NoResultException exception, 
             HttpServletRequest request) {

@@ -69,8 +69,8 @@ public abstract class AbstractControllerTest extends AbstractTest {
      *
      * @param <T> Generic class type
      * @param json A String of JSON.
-     * @param clazz A Class of type T. The mapper will attempt to convert the
-     * JSON into an Object of this Class type.
+     * @param clazz <p>A Class of type T. The mapper will attempt to convert the
+     * JSON into an Object of this Class type.</p>
      * @return An Object of type T.
      * @throws JsonParseException Thrown if an error occurs while mapping.
      * @throws JsonMappingException Thrown if an error occurs while mapping.

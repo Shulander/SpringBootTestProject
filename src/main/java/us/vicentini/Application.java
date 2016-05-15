@@ -25,9 +25,14 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    /**
+     * Instantiate a cache manager.
+     *
+     * @return Cache manager instance
+     */
     @Bean
     public CacheManager cacheManager() {
-//		ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager("greetings");
+        // ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager("greetings");
         GuavaCacheManager cacheManager = new GuavaCacheManager("greetings");
         return cacheManager;
     }

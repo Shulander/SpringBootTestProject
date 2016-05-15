@@ -20,6 +20,7 @@ import us.vicentini.ws.repository.GreetingRepository;
 
 /**
  * Greeting Service Bean.
+ *
  * @author Shulander
  */
 @Service
@@ -76,7 +77,7 @@ public class GreetingServiceBean implements GreetingService {
             throw new NoResultException("Requested entity not found.");
         }
 
-		// Ensure the entity object to be updated exists in the repository to
+        // Ensure the entity object to be updated exists in the repository to
         // prevent the default behavior of save() which will persist a new
         // entity if the entity matching the id does not exist
         Greeting greetingToUpdate = findOne(greeting.getId());

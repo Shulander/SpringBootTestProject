@@ -19,6 +19,6 @@ public interface IExceptionAttributes {
      * @param httpStatus http status
      * @return attributes map
      */
-    Map<String, Object> getExceptionAttributes(Exception exception
-            , HttpServletRequest httpRequest, HttpStatus httpStatus);
+    Map<String, Object> getExceptionAttributes(Exception exception, 
+        HttpServletRequest httpRequest, HttpStatus httpStatus);
 }

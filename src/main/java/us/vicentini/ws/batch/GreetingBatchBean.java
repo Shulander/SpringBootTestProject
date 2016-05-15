@@ -20,25 +20,37 @@ import us.vicentini.ws.service.GreetingService;
 @Profile("batch")
 @Component
 public class GreetingBatchBean {
-
+    
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    
     @Autowired
     private GreetingService greetingService;
 
+    /**
+     * Batch scheduler: CronJob.
+     *
+     * <p>
+     * this method uses the properties configured in the application-batch.properties file</p>
+     */
     @Scheduled(cron = "${batch.greeting.cron}")
     public void cronJob() {
         logger.info("> cronJob");
-
+        
         Collection<Greeting> greetings = greetingService.findAll();
         logger.info("There are {} greetings in the data store.", greetings.size());
-
+        
         logger.info("< cronJob");
     }
 
+    /**
+     * Batch scheduler: FixedRate with initial delay.
+     *
+     * <p>
+     * this method uses the properties configured in the application-batch.properties file</p>
+     */
     @Scheduled(
-            initialDelayString = "${batch.greeting.initialdelay}",
-            fixedRateString = "${batch.greeting.fixdrate}")
+        initialDelayString = "${batch.greeting.initialdelay}",
+        fixedRateString = "${batch.greeting.fixdrate}")
     public void fixedRateJobWithInitialDelay() {
         logger.info("> fixedRateJobWithInitialDelay");
 
@@ -51,14 +63,20 @@ public class GreetingBatchBean {
                 break;
             }
         } while (true);
-
+        
         logger.info("Processing time was {} seconds.", pause / 1000);
         logger.info("< fixedRateJobWithInitialDelay");
     }
 
+    /**
+     * Batch scheduler: FixedDelay with initial delay.
+     *
+     * <p>
+     * this method uses the properties configured in the application-batch.properties file</p>
+     */
     @Scheduled(
-            initialDelayString = "${batch.greeting.initialdelay}",
-            fixedDelayString = "${batch.greeting.fixeddelay}")
+        initialDelayString = "${batch.greeting.initialdelay}",
+        fixedDelayString = "${batch.greeting.fixeddelay}")
     public void fixedDelayJobWithInitialDelay() {
         logger.info("> fixedRateJobWithInitialDelay");
 
@@ -66,12 +84,12 @@ public class GreetingBatchBean {
         // Simulate job processing time
         long pause = 5000;
         long start = System.currentTimeMillis();
-        do {
-            if (start + pause < System.currentTimeMillis()) {
-                break;
-            }
-        } while (true);
-
+        try {
+            Thread.sleep(pause);
+        } catch (InterruptedException ex) {
+            logger.error("Interrupted thread error: " + ex.getMessage(), ex);
+        }
+        
         logger.info("Processing time was {} seconds.", pause / 1000);
         logger.info("< fixedRateJobWithInitialDelay");
     }

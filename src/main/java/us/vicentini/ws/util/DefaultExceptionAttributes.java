@@ -21,7 +21,9 @@ public class DefaultExceptionAttributes implements IExceptionAttributes {
     public static final String PATH = "path";
 
     @Override
-    public Map<String, Object> getExceptionAttributes(Exception exception, HttpServletRequest httpRequest, HttpStatus httpStatus) {
+    public Map<String, Object> getExceptionAttributes(Exception exception, HttpServletRequest httpRequest, 
+        HttpStatus httpStatus) {
+        
         Map<String, Object> exceptionAttributes = new LinkedHashMap<>();
 
         exceptionAttributes.put(TIMESTAMP, new Date());

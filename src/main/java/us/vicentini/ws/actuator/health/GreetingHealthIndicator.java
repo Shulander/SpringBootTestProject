@@ -11,7 +11,9 @@ import us.vicentini.ws.model.Greeting;
 import us.vicentini.ws.service.GreetingService;
 
 /**
- *
+ * Greeting Health Indicator.
+ * 
+ * <p>This implements the HealthIndicator interface and generates data for the health actuator</p>
  * @author Shulander
  */
 @Component
