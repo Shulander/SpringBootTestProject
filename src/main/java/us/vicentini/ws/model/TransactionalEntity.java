@@ -1,7 +1,6 @@
 package us.vicentini.ws.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.GeneratedValue;
@@ -11,6 +10,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
+
+import org.joda.time.DateTime;
 
 import us.vicentini.ws.util.RequestContext;
 
@@ -38,11 +39,11 @@ public class TransactionalEntity implements Serializable {
     private String createdBy;
 
     @NotNull
-    private Date createdAt;
+    private DateTime createdAt;
 
     private String updatedBy;
 
-    private Date updatedAt;
+    private DateTime updatedAt;
 
     public Long getId() {
         return id;
@@ -76,11 +77,11 @@ public class TransactionalEntity implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public Date getCreatedAt() {
+    public DateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(DateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -92,11 +93,11 @@ public class TransactionalEntity implements Serializable {
         this.updatedBy = updatedBy;
     }
 
-    public Date getUpdatedAt() {
+    public DateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(DateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -125,7 +126,7 @@ public class TransactionalEntity implements Serializable {
     @PrePersist
     public void beforePersist() {
 
-        setCreatedAt(new Date());
+        setCreatedAt(new DateTime());
 
         String username = RequestContext.getUsername();
         if (username == null) {
@@ -138,7 +139,7 @@ public class TransactionalEntity implements Serializable {
 
     @PreUpdate
     public void beforeUpdate() {
-        setUpdatedAt(new Date());
+        setUpdatedAt(new DateTime());
 
         String username = RequestContext.getUsername();
 

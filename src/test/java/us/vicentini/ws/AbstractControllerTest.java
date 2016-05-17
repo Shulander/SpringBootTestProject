@@ -10,8 +10,10 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 
 import us.vicentini.ws.web.api.BaseController;
 
@@ -37,6 +39,7 @@ public abstract class AbstractControllerTest extends AbstractTest {
      * <code>@Before</code> setup method.
      */
     protected void setUp() {
+        super.setUp();
         mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
@@ -60,6 +63,7 @@ public abstract class AbstractControllerTest extends AbstractTest {
      */
     protected String mapToJson(Object obj) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JodaModule());
         return mapper.writeValueAsString(obj);
     }
 
@@ -79,6 +83,8 @@ public abstract class AbstractControllerTest extends AbstractTest {
     protected <T> T mapFromJson(String json, Class<T> clazz)
             throws JsonParseException, JsonMappingException, IOException {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JodaModule());
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return mapper.readValue(json, clazz);
     }
 }

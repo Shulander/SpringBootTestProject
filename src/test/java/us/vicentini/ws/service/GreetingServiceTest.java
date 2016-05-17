@@ -27,6 +27,7 @@ public class GreetingServiceTest extends AbstractTest {
 
     @Before
     public void setUp() {
+        super.setUp();
         logger.info("setUp evictCache()");
         service.evictCache();
     }

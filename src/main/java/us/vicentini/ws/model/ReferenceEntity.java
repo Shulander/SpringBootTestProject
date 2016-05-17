@@ -1,11 +1,12 @@
 package us.vicentini.ws.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
+
+import org.joda.time.DateTime;
 
 /**
  *
@@ -29,11 +30,11 @@ public class ReferenceEntity implements Serializable {
     private Integer ordinal;
     
     @NotNull
-    private Date effectiveAt;
+    private DateTime effectiveAt;
     
-    private Date expiresAt;
+    private DateTime expiresAt;
     
-    private Date createdAt;
+    private DateTime createdAt;
 
     public Long getId() {
         return id;
@@ -67,27 +68,27 @@ public class ReferenceEntity implements Serializable {
         this.ordinal = ordinal;
     }
     
-    public Date getEffectiveAt() {
+    public DateTime getEffectiveAt() {
         return effectiveAt;
     }
 
-    public void setEffectiveAt(Date effectiveAt) {
+    public void setEffectiveAt(DateTime effectiveAt) {
         this.effectiveAt = effectiveAt;
     }
 
-    public Date getExpiresAt() {
+    public DateTime getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(Date expiresAt) {
+    public void setExpiresAt(DateTime expiresAt) {
         this.expiresAt = expiresAt;
     }
 
-    public Date getCreatedAt() {
+    public DateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(DateTime createdAt) {
         this.createdAt = createdAt;
     }
 
