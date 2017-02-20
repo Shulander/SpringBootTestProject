@@ -37,9 +37,8 @@ public class RoleRepositoryTests extends AbstractTest {
         Collection<Role> list = repository.findAllEfective(new DateTime());
 
         Assert.assertNotNull("failure - expected entity not null", list);
-        Assert.assertEquals("failure - expected list size", 3, list.size());
+        Assert.assertTrue("failure - expected list size", list.size() >= 3);
 
     }
-
 
 }

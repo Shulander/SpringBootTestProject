@@ -1,6 +1,7 @@
 package us.vicentini.ws;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.ManagementServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -23,6 +24,7 @@ import us.vicentini.ws.security.AccountAuthenticationProvider;
  */
 @Configuration
 @EnableWebSecurity
+@Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityConfiguration {
 
     /**
