@@ -2,6 +2,7 @@ package us.vicentini.ws.web.api;
 
 import java.util.Collection;
 import java.util.Date;
+import org.joda.time.DateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,7 @@ public class RoleController extends BaseController {
             Date now = new Date();
             roles = roleRepository.findByEffectiveAtBeforeAndExpiresAtAfterOrExpiresAtNullOrderByOrdinal(now, now);
         } else {
-            roles = roleRepository.findAllEfective(new Date());
+            roles = roleRepository.findAllEfective(new DateTime());
         }
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }

@@ -3,8 +3,8 @@ package us.vicentini.ws;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import us.vicentini.Application;
 import us.vicentini.ws.util.RequestContext;
@@ -16,8 +16,8 @@ import us.vicentini.ws.util.RequestContext;
  *
  * @author Shulander
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(
+@RunWith(SpringRunner.class)
+@SpringBootTest(
         classes = Application.class)
 public abstract class AbstractTest {
 
